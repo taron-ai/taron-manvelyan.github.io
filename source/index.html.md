@@ -1,11 +1,8 @@
 ---
-title: API Reference
+title: MicroF1: API
 
 language_tabs:
-  - shell
-  - ruby
-  - python
-  - javascript
+  - json
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
