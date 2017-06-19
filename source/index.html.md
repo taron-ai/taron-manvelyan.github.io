@@ -1,12 +1,12 @@
 ---
-title: MicroF1: API
+title: MicroF1 - API Docs
 
 language_tabs:
+  - php
   - json
 
+
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
@@ -14,173 +14,118 @@ includes:
 search: true
 ---
 
-# Introduction
+# Пользователи 
+## Добавить пользователя
+### adduser
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+> **POST:**  https://api.com/v1/add/user
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+```php
 
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
 ```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+
 ```
 
-This endpoint retrieves all kittens.
+Данная команда используется при создании профиля клиента в системе.
 
-### HTTP Request
+Название | Значение | Описание
+-------------- | -------------- | --------------
+ИНН |	number 10 |	inn
+ФИО |	text |	fio
+Дата рождения |	calendar |	bdate
+Вид паспорта |	drop-down list |	passport_view
+Паспорт - серия |	Blank: text 2 |	passport_series_blank 
+Паспорт - номер |	Blank: number 6 |	passport_number_blank
+Паспорт - кем и когда выдан |	Blank: text + data |	passport_who_blank
+Прописка |	text |	address_reg
+Фактический адрес |	text |	address_fact
+Телефон (мобильный) |	number 10 |	mobile_phone
+Телефон (стационарный) |	number 10 |	home_phone
+Компания |	text	| work_name
+Телефон |	number 10 |	work_phone
+Адрес (фактический) |	text |	work_address_fact
+Адрес (юридический) |	text |	work_address_reg
+Должность |	drop-down list |	work_post
+Стаж (текущий)	| |	work_exp
+Телефон |	number 10 |	contact_phone
+Абонент |	text |	sub
+Доход |	number 3-5 |	income
+Другие источники - доход |	number 3-5 |	other_income
+Другие источники - источник |	text |	other_source
+Семейное положение |	drop-down list |	family_status
+Дети |	drop-down list |	children
 
-`GET http://example.com/api/kittens`
 
-### Query Parameters
+# Кредиты
+## Создать заявку
+### addcredit
+Данная команда используется при создании новой кредитной заявки в системе.
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+> **POST:** https://api.com/v1/add/credit
 
-## Get a Specific Kitten
+```php
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
 ```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
 
 ```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+
 ```
 
-This endpoint retrieves a specific kitten.
+Название | Значение | Описание
+-------------- | -------------- | --------------
+Сумма |	text |	amount
+Срок |	text |	term
+Процент |	text |	percent
+Комментарий |	text |	comment
+Номер карты банка | nubmer 16 | creditcard_number
+Цель |	text |	purpose
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 
-### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
 
-### URL Parameters
+## Получить статус
+### creditstatus
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
 
+
+
+> **GET:** https://api.com/api/v1/status/credit
+
+```php
+
+```
+
+```json
+
+```
+
+Название | Значение | Описание
+-------------- | -------------- | --------------
+Номер кредита |	number | creditid
+
+
+
+
+# Документы
+## Получить договор
+### creditdocs
+
+
+> **GET:** https://api.com/api/v1/docs/credit
+
+```php
+
+```
+
+```json
+
+```
+
+Название | Значение | Описание
+-------------- | -------------- | --------------
+Номер кредита |	number | creditid
+ИНН |	number 10 |	inn
